@@ -10,6 +10,9 @@ on:
   # 允许您手动从“Actions”标签运行此工作流程
   workflow_dispatch:
 
+  repository_dispatch:
+    types: [ build ]
+
 # 设置GITHUB_TOKEN的权限，以允许部署到GitHub Pages
 permissions:
   contents: read
