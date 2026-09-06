@@ -52,8 +52,11 @@ jobs:
         run: git submodule update --init themes/hugo-theme-stack
       - name: 拉取并更新私有子模块
         run: |
-          GIT_CONFIG_PARAMETERS="\"http.extraheader=Authorization: token ${GH_PAT}\"" \
-            git submodule update --init --remote content
+          git submodule sync
+          GIT_CONFIG_COUNT=1 \
+          GIT_CONFIG_KEY_0="http.extraheader" \
+          GIT_CONFIG_VALUE_0="Authorization: token $GH_PAT" \
+          git submodule update --init --remote content
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
       - name: 设置Pages
