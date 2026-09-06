@@ -48,6 +48,8 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: 更新子模块到远程最新
+        run: git submodule update --remote content
       - name: 设置Pages
         id: pages
         uses: actions/configure-pages@v4
