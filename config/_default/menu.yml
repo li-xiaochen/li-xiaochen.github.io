@@ -1,0 +1,14 @@
+main:
+  - identifier: home
+    name: 主页
+    url: /
+    weight: 10
+    params:
+      icon: home
+
+  - identifier: categories
+    name: 分类
+    url: /categories/
+    weight: 20
+    params:
+      icon: categories
