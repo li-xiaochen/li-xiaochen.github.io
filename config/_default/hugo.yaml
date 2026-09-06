@@ -1,0 +1,4 @@
+baseURL: https://li-xiaochen.github.io/
+locale: zh-cn
+title: 李晓晨的博客
+theme: hugo-theme-stack
