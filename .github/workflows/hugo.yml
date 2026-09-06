@@ -46,10 +46,16 @@ jobs:
       - name: 检出
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           fetch-depth: 0
-      - name: 更新子模块到远程最新
-        run: git submodule update --remote content
+      - name: 拉取公开子模块（Stack 主题）
+        run: git submodule update --init themes/hugo-theme-stack
+      - name: 拉取并更新私有子模块
+        run: |
+          git -c http.extraheader="Authorization: token ${{ secrets.GH_PAT }}" \
+            submodule update --init content
+          git -c http.extraheader="Authorization: token ${{ secrets.GH_PAT }}" \
+            submodule update --remote content
       - name: 设置Pages
         id: pages
         uses: actions/configure-pages@v4
